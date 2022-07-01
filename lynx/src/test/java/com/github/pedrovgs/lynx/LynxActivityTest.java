@@ -32,7 +32,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * @author Pedro Vicente Gómez Sánchez.
  */
-@Config(constants = BuildConfig.class, sdk = 18)
+@Config(constants = BuildConfig.class, sdk = 23)
 @RunWith(RobolectricTestRunner.class)
 public class LynxActivityTest {
 

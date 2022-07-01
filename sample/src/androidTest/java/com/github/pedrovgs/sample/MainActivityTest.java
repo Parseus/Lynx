@@ -18,14 +18,16 @@ package com.github.pedrovgs.sample;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withSpinnerText;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.IsNot.not;
+
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
 /**
  * @author Pedro Vicente Gomez Sanchez.
@@ -35,6 +37,8 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
   private static final String LYNX_FILTER = "Lynx";
   private static final String VERBOSE_TRACE_LEVEL = "VERBOSE";
   private static final String DEBUG_TRACE_LEVEL = "DEBUG";
+
+  public ActivityScenarioRule<MainActivity> = new ActivityScenarioRule(MainActivity.class)
 
   public MainActivityTest() {
     super(MainActivity.class);

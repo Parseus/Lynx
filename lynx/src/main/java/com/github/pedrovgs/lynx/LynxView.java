@@ -16,10 +16,13 @@
 
 package com.github.pedrovgs.lynx;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.support.annotation.CheckResult;
+import androidx.annotation.CheckResult;
+
+import android.os.Build;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -282,16 +285,22 @@ public class LynxView extends RelativeLayout implements LynxPresenter.View {
   }
 
   /**
-   * Hack to change EditText cursor color even if the API level is lower than 12. Please, don't do
-   * this at home.
+   * Changes EditText cursor color either with an official API (on API level >= 29)
+   * or through reflection on older levels.
    */
+  @SuppressLint("DiscouragedPrivateApi")
+  @SuppressWarnings("JavaReflectionMemberAccess")
   private void configureCursorColor() {
-    try {
-      Field f = TextView.class.getDeclaredField("mCursorDrawableRes");
-      f.setAccessible(true);
-      f.set(et_filter, R.drawable.edit_text_cursor_color);
-    } catch (Exception e) {
-      Log.e(LOGTAG, "Error trying to change cursor color text cursor drawable to null.");
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+      et_filter.setTextCursorDrawable(R.drawable.edit_text_cursor_color);
+    } else {
+      try {
+        Field f = TextView.class.getDeclaredField("mCursorDrawableRes");
+        f.setAccessible(true);
+        f.set(et_filter, R.drawable.edit_text_cursor_color);
+      } catch (Exception e) {
+        Log.e(LOGTAG, "Error trying to change cursor color text cursor drawable to null.");
+      }
     }
   }
 

@@ -3,7 +3,7 @@ Lynx [![Build Status](https://travis-ci.org/pedrovgs/Lynx.svg?branch=master)](ht
 
 Are you bored of connect your device to your computer to know what's happening inside your app? If you hate it, this is going to be your favorite library. Shake your phone, press a button or add a ``LynxView`` to your layouts and you'll see what Andoird logcat is printing :)
 
-Lynx is an Android library created to show a custom view with all the information logcat is printing, different traces of different levels will be rendererd to show from log messages to your application exceptions. You can filter this traces (using regular expressions if you want), share your logcat to other apps, configure the max number of traces to show or the sampling rate used by the library. The min Api Level supported is 10.
+Lynx is an Android library created to show a custom view with all the information logcat is printing, different traces of different levels will be rendererd to show from log messages to your application exceptions. You can filter this traces (using regular expressions if you want), share your logcat to other apps, configure the max number of traces to show or the sampling rate used by the library. The min Api Level supported is 23.
 
 Screenshots
 -----------
@@ -72,16 +72,6 @@ To be able to show LynxActivity shaking your phone or starting it programaticall
 
 <activity android:name="com.github.pedrovgs.lynx.LynxActivity"/>
 
-```
-
-If you have to support applications based on Android 2.X you'll have to add ``READ_LOG`` permission to your AndroidManifest. **This is not needed for newer Android versions.**
-
-```xml
-
-<uses-permission android:name="android.permission.READ_LOGS"/>
-
-```
-
 
 Add it to your project
 ----------------------
@@ -92,7 +82,7 @@ Add Lynx dependency to your build.gradle
 ```groovy
 
 dependencies{
-    compile 'com.github.pedrovgs:lynx:1.1.0'
+    implementation 'com.github.pedrovgs:lynx:1.1.0'
 }
 
 ```
@@ -104,7 +94,7 @@ Or add Lynx as a new dependency inside your pom.xml
 <dependency>
     <groupId>com.github.pedrovgs</groupId>
     <artifactId>lynx</artifactId>
-    <version>1.0.7</version>
+    <version>1.1.0</version>
     <type>aar</type>
 </dependency>
 
